@@ -1,8 +1,8 @@
 ## Installation
 Nodejs  
 Postman  
-nodemon  
 yarn(optional)  
+nodemon(npm install -g nodemon or yarn add nodemon)  
 
 ## Run
 For staging - npm start  
