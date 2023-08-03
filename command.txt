@@ -1,0 +1,5 @@
+npm init
+npm install -g yarn
+yarn add nodemon
+## change in package.json "start" to "nodemon index"
+yarn start
