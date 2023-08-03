@@ -1,8 +1,8 @@
 ## Installation
-Nodejs
-Postman
-nodemon
-yarn(optional)
+Nodejs  
+Postman  
+nodemon  
+yarn(optional)  
 
 ## Run
 For staging - npm start
