@@ -1,7 +1,7 @@
 /*
  * Title: Environments
  * Description: Handle all environment related things
- * Author: Sumit Saha ( Learn with Sumit )
+ * Author: mumu
  * Date: 11/20/2020
  *
  */
@@ -15,12 +15,14 @@ const environments = {};
 environments.staging = {
     port: 3000,
     envName: 'staging',
+    secretKey: 'hsjdhsdhsjdhjshdjshd',
 };
 
 // production environment
 environments.production = {
     port: 5000,
     envName: 'production',
+    secretKey: 'djkdjskdjksdjksjdskjd',
 };
 
 // determine which environment was passed

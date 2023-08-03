@@ -1,0 +1,9 @@
+{
+    "firstName" : "afnan" ,
+    "lastName" : "mumu" ,
+    "phone" : "01773046092" ,
+    "password" : "XXX" ,
+    "tosAgreement" : true
+}
+
+http://localhost:3000/user?phone=01773046092

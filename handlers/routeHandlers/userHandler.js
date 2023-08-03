@@ -1,7 +1,7 @@
 /*
  * Title: User Handler
  * Description: Handler to handle user related routes
- * Author: mumu
+ * Author: Sumit Saha ( Learn with Sumit )
  * Date: 11/21/2020
  *
  */
@@ -73,7 +73,7 @@ handler._users.post = (requestProperties, callback) => {
                             message: 'User was created successfully!',
                         });
                     } else {
-                        callback(500, { error: 'Could not create user!' });
+                        callback(500, { error: `Could not create user! ${phone}` });
                     }
                 });
             } else {
@@ -84,7 +84,7 @@ handler._users.post = (requestProperties, callback) => {
         });
     } else {
         callback(400, {
-            error: 'You have a problem in your request',
+            error: `You have a problem in your request ${firstName} , ${lastName} , ${phone}, ${password} , ${tosAgreement}`,
         });
     }
 };
@@ -93,9 +93,9 @@ handler._users.post = (requestProperties, callback) => {
 handler._users.get = (requestProperties, callback) => {
     // check the phone number if valid
     const phone =
-        typeof requestProperties.queryStringObject.phone === 'string' &&
-        requestProperties.queryStringObject.phone.trim().length === 11
-            ? requestProperties.queryStringObject.phone
+        typeof requestProperties.querystringobject.phone === 'string' &&
+        requestProperties.querystringobject.phone.trim().length === 11
+            ? requestProperties.querystringobject.phone
             : false;
     if (phone) {
         // lookup the user
@@ -155,17 +155,19 @@ handler._users.put = (requestProperties, callback) => {
                         userData.firstName = firstName;
                     }
                     if (lastName) {
-                        userData.firstName = firstName;
+                        userData.lastName = lastName;
                     }
                     if (password) {
                         userData.password = hash(password);
                     }
-
+                    if (phone) {
+                        userData.phone = phone;
+                    }
                     // store to database
                     data.update('users', phone, userData, (err2) => {
                         if (!err2) {
                             callback(200, {
-                                message: 'User was updated successfully!',
+                                message: `User was updated successfully! ${uData} ${firstName}`,
                             });
                         } else {
                             callback(500, {
@@ -195,9 +197,9 @@ handler._users.put = (requestProperties, callback) => {
 handler._users.delete = (requestProperties, callback) => {
     // check the phone number if valid
     const phone =
-        typeof requestProperties.queryStringObject.phone === 'string' &&
-        requestProperties.queryStringObject.phone.trim().length === 11
-            ? requestProperties.queryStringObject.phone
+        typeof requestProperties.querystringobject.phone === 'string' &&
+        requestProperties.querystringobject.phone.trim().length === 11
+            ? requestProperties.querystringobject.phone
             : false;
 
     if (phone) {
@@ -223,7 +225,7 @@ handler._users.delete = (requestProperties, callback) => {
         });
     } else {
         callback(400, {
-            error: 'There was a problem in your request!',
+            error: 'There was a problem in your request! ',
         });
     }
 };

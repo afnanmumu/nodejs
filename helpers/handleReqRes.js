@@ -1,7 +1,7 @@
 /*
  * Title: Handle Request Response
  * Description: Handle Resquest and response
- * Author: Sumit Saha ( Learn with Sumit )
+ * Author: mumu
  * Date: 11/15/2020
  *
  */
@@ -11,6 +11,7 @@ const routes = require('../routes');
 const { notFoundHandler } = require('../handlers/routeHandlers/notFoundHandler');
 const url = require('url');
 const {StringDecoder} = require('string_decoder') //here StringDecoder is a class
+const { parseJSON } = require('./utilities');
 
 
 // module scaffolding
@@ -37,19 +38,8 @@ handler.handleReqRes = (req, res) => {
         headersobject,
     };
 
+    // check route is valid
     const chosenHandler = routes[trimpath] ? routes[trimpath] : notFoundHandler;
-
-    chosenHandler(requestProperties, (statusCode, payload) => {
-        statusCode = typeof statusCode === 'number' ? statusCode : 500;
-        payload = typeof payload === 'object' ? payload : {};
-
-        const payloadString = JSON.stringify(payload);
-
-        // return the final response
-        res.setHeader('Content-Type' , 'application/JSON') //file type set
-        res.writeHead(statusCode);
-        res.end(payloadString);
-    });
 
     req.on(
         'data',
@@ -60,9 +50,18 @@ handler.handleReqRes = (req, res) => {
     req.on(
         'end',
         () => {
-            realdata += decoder.end()
-            console.log(realdata);
-            res.end('hello programmers');
+            realdata += decoder.end() 
+            requestProperties.body = parseJSON(realdata); // adding body property of json format
+
+            chosenHandler(requestProperties, (statusCode, payload) => {
+                statusCode = typeof statusCode === 'number' ? statusCode : 500;
+                payload = typeof payload === 'object' ? payload : {};
+                const payloadString = JSON.stringify(payload);
+                // return the final response
+                res.setHeader('Content-Type', 'application/json');
+                res.writeHead(statusCode);
+                res.end(payloadString);
+            });
         }
     )
 };
