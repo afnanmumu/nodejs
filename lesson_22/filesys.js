@@ -1,11 +1,24 @@
 const express = require('express')
 const multer = require('multer')
 const app = express()
+const path = require('path')
 
 const up_folder = "./upload"
 
+const storage = multer.diskStorage({
+    destination: (req,file,cb)=>{
+        cb(null,up_folder) // if folder not created it will create otherwise execute rest of the code
+    },
+    filename: (req,file,cb)=>{
+        // filename + timestamp + extension
+        const fileext = path.extname(file.originalname)
+        const fileName = file.originalname.replace(fileext,'').toLowerCase().split(' ').join('-') + '-' + Date.now() + fileext
+        cb(null,fileName)
+    },
+})
+
 var upload = multer({
-    dest: up_folder,
+    storage: storage,
     limits: {
         fileSize: 1000000, // 1mb
     },
@@ -38,6 +51,7 @@ app.post('/', upload.fields([
     { name: "avatar", maxCount: 1},
     // { name: "gallery", maxCount: 3},
 ]) ,(req,res)=>{
+    console.log(req.files);
     res.send('File Uploaded successfully');
 }) // for multiple file upload
 
