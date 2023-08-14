@@ -1,0 +1,49 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\afnan\.yarn\releases\yarn-1.22.19.cjs add multer
+
+PATH: 
+  C:\Program Files\ImageMagick-7.1.1-Q16-HDRI;C:\Program Files\Python311\Scripts\;C:\Program Files\Python311\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\PostgreSQL\15\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\afnan\AppData\Roaming\npm;C:\Users\afnan\AppData\Roaming\Python\Python311\Scripts;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\gs\gs10.01.2\bin;C:\poppler-23.05.0\Library\bin;C:\Program Files\Tesseract-OCR;C:\Program Files\ImageMagick-7.1.1-Q16-HDRI;C:\Users\afnan\AppData\Local\Microsoft\WindowsApps;C:\Users\afnan\AppData\Roaming\npm;C:\Program Files\JetBrains\PyCharm Community Edition 2023.1.2\bin;;C:\Users\afnan\.dotnet\tools;C:\Users\afnan\AppData\Local\GitHubDesktop\bin;C:\Users\afnan\AppData\Local\Programs\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\afnan\Desktop\NODEJS TUITORIAL\package.json: Unexpected string in JSON at position 339
+      at JSON.parse (<anonymous>)
+      at C:\Users\afnan\.yarn\releases\yarn-1.22.19.cjs:1104:57
+      at Generator.next (<anonymous>)
+      at step (C:\Users\afnan\.yarn\releases\yarn-1.22.19.cjs:310:30)
+      at C:\Users\afnan\.yarn\releases\yarn-1.22.19.cjs:321:13
+
+npm manifest: 
+  {
+    "name": "mumu",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon middleware",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "cookie-parser": "^1.4.6",
+      "ejs": "^3.1.9",
+      "express": "^4.18.2",
+      "multer": "^1.4.5-lts.1",
+      "yarn": "^1.22.19"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
