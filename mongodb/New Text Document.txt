@@ -1,0 +1,19 @@
+## mongodb query codes in command prompt
+
+mongosh
+show dbs
+use ecommerce // create a database
+db
+db.products.insertOne({name: "Iphone 13",price: 1000000,category: "smartphone",active: true}) // insert json data in database
+db.products.find()
+db.products.find().pretty()
+db.products.insertMany([{name: "Iphone 13",price: 1000000,category: "smartphone",active: true},{name: "Iphone 10",price: 590000,category: "smartphone",active: true},{name: "Iphone 12",price: 750000,category: "smartphone",active: true}])
+db.products.find({active: false , category:"smartphone"})
+db.products.find({active: false , category:"smartphone"},{active:0}) // wont show active field
+db.products.find({category:"smartphone"}).limit(2)
+db.products.findOne({category:"smartphone"})
+db.products.find({category:"smartphone"}).limit(1).skip(1)
+db.products.updateOne({name: "Iphone 10"},{$set: {price: 480000}})
+db.products.updateMany({},{$set: {active: false}})
+db.products.deleteOne({name: "Iphone 10"})
+db.products.deleteMany({name: "Iphone 13"})
